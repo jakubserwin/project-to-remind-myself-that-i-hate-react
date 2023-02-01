@@ -17,14 +17,16 @@
     "jsx": "react-jsx",
     "types": [
       "node"
-    ]
+    ],
+    "baseUrl": "./src"
   },
   "include": [
     "src",
     ".eslintrc.cjs",
     "tailwind.config.cjs",
     "postcss.config.cjs",
-    "codegen.ts"
+    "codegen.ts",
+    "vite.config.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

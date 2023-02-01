@@ -1,38 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import { useQuery } from '@apollo/client'
+import { gql } from './gql'
+
+// TODO Schema intelisesne
+// TODO Path aliases or not
+// TODO Check documents array syntax in codegen
+// TODO 
+
+const nearest = gql(/* GraphQL */ `
+  query nearest {
+    nearest(lat: 60.400105, lon: 23.088225) {
+      edges {
+        node {
+          id
+          distance
+          place {
+            lat
+            lon
+          }
+        }
+      }
+    }
+  }
+`)
 
 function App() {
-  const [count, setCount] = useState(0)
+  // eslint-disable-next-line max-len
+  const { data } = useQuery(nearest)
 
   return (
-    <div className="App">
-      <div className="flex justify-center">
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((innerCount) => innerCount + 1)} type="button">
-          count is
-          {' '}
-          {count}
-        </button>
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <h2>My first Apollo app 🚀</h2>
+      <br />
+      {/* <div>{data?.bikeStation}</div> */}
     </div>
   )
 }

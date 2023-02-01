@@ -1,23 +1,22 @@
 import { CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
-  schema: 'https://barcelona-urban-mobility-graphql-api.netlify.app/graphql',
+  schema: 'https://api.digitransit.fi/routing/v1/routers/finland/index/graphql',
+  // this cannot be used like
+  // documents: ['src/**/*.tsx', 'src/**/*.ts'],
   documents: ['src/**/*.tsx'],
   ignoreNoDocuments: true,
   generates: {
     './src/gql/': {
       preset: 'client',
+      presetConfig: {
+        gqlTagName: 'gql',
+      },
       config: {
         useTypeImports: true,
         skipTypename: true,
       },
       plugins: [],
-    },
-    './schema.graphql': {
-      config: {
-        useTypeImports: true,
-      },
-      plugins: ['schema-ast'],
     },
   },
 }

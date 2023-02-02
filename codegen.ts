@@ -4,7 +4,7 @@ const config: CodegenConfig = {
   schema: 'https://api.digitransit.fi/routing/v1/routers/finland/index/graphql',
   // this cannot be used like
   // documents: ['src/**/*.tsx', 'src/**/*.ts'],
-  documents: ['src/**/*.tsx'],
+  documents: ['src/**/*.ts'],
   ignoreNoDocuments: true,
   generates: {
     './src/gql/': {

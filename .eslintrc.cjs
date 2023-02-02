@@ -26,5 +26,6 @@ module.exports = {
     semi: ['error', 'never'],
     '@typescript-eslint/semi': 'off',
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
   },
 }

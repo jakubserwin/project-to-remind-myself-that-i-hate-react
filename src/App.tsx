@@ -1,17 +1,14 @@
-import './App.css'
-import { useQuery } from '@apollo/client'
-import { nearest } from './graphql'
+import SidePanelComponent from './components/SidePanelComponent'
+import NavBarComponent from './components/NavBarComponent'
 
-function App() {
-  const { data } = useQuery(nearest)
-  console.log(data)
-  return (
-    <div>
-      <h2>My first Apollo app 🚀</h2>
-      <br />
-      {/* <div>{data?.bikeStation}</div> */}
+const App = () => (
+  <div className="flex flex-col gap-8">
+    <NavBarComponent />
+    <div className="border flex gap-8 w-full h-screen">
+      <SidePanelComponent />
+      <div className="bg-teal-100 h-full w-full" />
     </div>
-  )
-}
+  </div>
+)
 
 export default App

@@ -27,5 +27,11 @@ module.exports = {
     '@typescript-eslint/semi': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
   },
 }

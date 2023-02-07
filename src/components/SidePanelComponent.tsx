@@ -5,7 +5,7 @@ import { AiOutlineCar } from 'react-icons/ai'
 const SidePanelComponent = () => (
   <div>
     <div className="flex items-center justify-between w-72">
-      <h2 className="text-2xl font-bold">Filters</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Filters</h2>
       <button type="button" className="text-blue-600">Reset</button>
     </div>
     <div className="mt-8">

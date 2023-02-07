@@ -1,18 +1,16 @@
 import { gql } from '../../gql'
 
 export const nearest = gql(/* GraphQL */ `
-  query nearest {
-    nearest(lat: 60.400105, lon: 23.088225) {
-      edges {
-        node {
-          id
-          distance
-          place {
-            lat
-            lon
-          }
+    query nearest($lat: Float!, $lon: Float!, $filterByPlaceTypes: [FilterPlaceType] ) {
+        nearest(lat: $lat, lon: $lon, filterByPlaceTypes: $filterByPlaceTypes) {
+            edges {
+                node {
+                    place {
+                        lat
+                        lon
+                    }
+                }
+            }
         }
-      }
     }
-  }
 `)

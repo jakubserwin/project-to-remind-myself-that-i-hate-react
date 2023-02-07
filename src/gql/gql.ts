@@ -13,7 +13,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "\n  query nearest {\n    nearest(lat: 60.400105, lon: 23.088225) {\n      edges {\n        node {\n          id\n          distance\n          place {\n            lat\n            lon\n          }\n        }\n      }\n    }\n  }\n": types.NearestDocument,
+    "\n    query nearest($lat: Float!, $lon: Float!, $filterByPlaceTypes: [FilterPlaceType] ) {\n        nearest(lat: $lat, lon: $lon, filterByPlaceTypes: $filterByPlaceTypes) {\n            edges {\n                node {\n                    place {\n                        lat\n                        lon\n                    }\n                }\n            }\n        }\n    }\n": types.NearestDocument,
 };
 
 /**
@@ -33,7 +33,7 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query nearest {\n    nearest(lat: 60.400105, lon: 23.088225) {\n      edges {\n        node {\n          id\n          distance\n          place {\n            lat\n            lon\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query nearest {\n    nearest(lat: 60.400105, lon: 23.088225) {\n      edges {\n        node {\n          id\n          distance\n          place {\n            lat\n            lon\n          }\n        }\n      }\n    }\n  }\n"];
+export function gql(source: "\n    query nearest($lat: Float!, $lon: Float!, $filterByPlaceTypes: [FilterPlaceType] ) {\n        nearest(lat: $lat, lon: $lon, filterByPlaceTypes: $filterByPlaceTypes) {\n            edges {\n                node {\n                    place {\n                        lat\n                        lon\n                    }\n                }\n            }\n        }\n    }\n"): (typeof documents)["\n    query nearest($lat: Float!, $lon: Float!, $filterByPlaceTypes: [FilterPlaceType] ) {\n        nearest(lat: $lat, lon: $lon, filterByPlaceTypes: $filterByPlaceTypes) {\n            edges {\n                node {\n                    place {\n                        lat\n                        lon\n                    }\n                }\n            }\n        }\n    }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

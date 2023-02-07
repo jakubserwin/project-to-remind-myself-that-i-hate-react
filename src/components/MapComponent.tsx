@@ -3,10 +3,34 @@ import {
   MapContainer, TileLayer,
 } from 'react-leaflet'
 import LocationMarketComponent from './LocationMarkerComponent'
+import { useLazyQuery } from '@apollo/client'
+import { nearest } from '../graphql'
+import { useState } from 'react'
+import { FilterPlaceType } from '../gql/graphql'
 
-const MapComponent = () => {
-  const handleClick = (latlng: LatLng) => {
-    console.log(latlng)
+interface Props {
+  locationType: FilterPlaceType | null;
+}
+
+const MapComponent = ({ locationType }: Props) => {
+  const [position, setPosition] = useState<LatLng | null>(null)
+
+  const [getNearest] = useLazyQuery(nearest)
+
+  const handleClick = async (latLng: LatLng) => {
+    if (!latLng || !locationType) return
+
+    const { lat, lng: lon } = latLng
+
+    const { data } = await getNearest({
+      variables: {
+        lat,
+        lon,
+        filterByPlaceTypes: locationType
+      },
+    })
+
+    console.log(data)
   }
 
   return (
@@ -17,7 +41,7 @@ const MapComponent = () => {
           subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
           maxZoom={20}
         />
-        <LocationMarketComponent onClick={handleClick} />
+        <LocationMarketComponent onClick={handleClick}/>
       </MapContainer>
     </div>
   )

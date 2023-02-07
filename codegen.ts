@@ -18,6 +18,10 @@ const config: CodegenConfig = {
       },
       plugins: [],
     },
+    './schema.graphql': {
+      schema: 'https://api.digitransit.fi/routing/v1/routers/finland/index/graphql',
+      plugins: ['schema-ast']
+    },
   },
 }
 

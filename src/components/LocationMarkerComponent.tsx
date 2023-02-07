@@ -5,7 +5,7 @@ import {
 } from 'react-leaflet'
 
 interface Props {
-  onClick: (e: any) => void;
+  onClick: (latlng: LatLng) => void;
 }
 
 const LocationMarketComponent = ({ onClick }: Props) => {
@@ -14,7 +14,7 @@ const LocationMarketComponent = ({ onClick }: Props) => {
   const map = useMapEvents({
     click(e) {
       setPosition(e.latlng)
-      map.flyTo(e.latlng, map.getZoom())
+      map.flyTo(e.latlng, 12)
       onClick(e.latlng)
     },
   })

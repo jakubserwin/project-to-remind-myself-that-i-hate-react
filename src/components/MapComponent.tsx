@@ -1,12 +1,14 @@
+import { LatLng } from 'leaflet'
 import {
   MapContainer, TileLayer,
 } from 'react-leaflet'
 import LocationMarketComponent from './LocationMarkerComponent'
 
 const MapComponent = () => {
-  const handleClick = (e: any) => {
-    console.log(e)
+  const handleClick = (latlng: LatLng) => {
+    console.log(latlng)
   }
+
   return (
     <div className="h-full w-full rounded-xl overflow-hidden">
       <MapContainer center={[64, 26]} zoom={5} scrollWheelZoom={false} className="h-full">

@@ -4,6 +4,7 @@ import { ApolloProvider } from '@apollo/client'
 import { client } from './api/apolloClient'
 import App from './App'
 import './index.css'
+import 'leaflet/dist/leaflet.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
